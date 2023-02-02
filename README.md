@@ -12,10 +12,10 @@ cross entropy between the true and predicted labels is utilized for training the
 
 ## TSNE Visualization
 
-<img src="tsne.PNG" alt="Different Scenarios for Training" width="500" height="400">
+<img src="./figures/tsne.PNG" alt="Different Scenarios for Training" width="500" height="400">
 
 ## Representation Visualization
 
-<img src="CL.PNG" alt="Different Scenarios for Training" width="500" height="400">
-<img src="SCL.PNG" alt="Different Scenarios for Training" width="500" height="400">
-<img src="SL.PNG" alt="Different Scenarios for Training" width="500" height="400">
+<img src="./figures/CL.PNG" alt="Different Scenarios for Training" width="500" height="400">
+<img src="./figures/SCL.PNG" alt="Different Scenarios for Training" width="500" height="400">
+<img src="./figures/SL.PNG" alt="Different Scenarios for Training" width="500" height="400">
