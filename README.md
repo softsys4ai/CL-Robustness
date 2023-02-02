@@ -9,3 +9,8 @@ cross entropy between the true and predicted labels is utilized for training the
 <img src="Scenarios.jpg" alt="Different Scenarios for Training" width="800" height="500">
 
 ###### Figure 1: An overview of the methodology. a) Representation learning phase, b) Linear classification phase, c) All different scenarios of training phases in contrastive and supervised contrastive learning scheme.
+
+## TSNE Visualization
+
+<img src="tsne.png" alt="Different Scenarios for Training" width="800" height="500">
+
