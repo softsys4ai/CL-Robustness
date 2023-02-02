@@ -6,7 +6,7 @@ cross entropy between the true and predicted labels is utilized for training the
 - Contrastive Learning (CL): Within the standard framework of SimCLR, contrastive learning trains a base encoder by minimizing a contrastive loss over the representations projected into a latent space (Figure 1(a)). The extracted features will be employed to train a linear classifier on a downstream task as shown in Figure 1(a).
 - Supervised Contrastive Learning (SCL): A supervised extension of contrastive learning  to avoid false positive pairs selection by leveraging the label information.
 
-<img src="Scenarios.jpg" alt="Different Scenarios for Training" width="700" height="400">
+<img src="Scenarios.jpg" alt="Different Scenarios for Training" width="600" height="400">
 
 ###### Figure 1: An overview of the methodology. a) Representation learning phase, b) Linear classification phase, c) All different scenarios of training phases in contrastive and supervised contrastive learning scheme.
 
