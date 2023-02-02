@@ -14,10 +14,13 @@ cross entropy between the true and predicted labels is utilized for training the
 
 <img src="./figures/tsne.PNG" alt="Different Scenarios for Training" width="500" height="400">
 
+
+###### Figure 2: t-SNE visualization of representations learned using various learning schemes. Semi-supervised learning schemes (SL-CL and SCL-CL) separate classes much more clearly than contrastive learning (CL) scheme.
+
 ## Representation Visualization
 <img src="./figures/ST_ST.PNG" alt="Different Scenarios for Training" width="830" height="230">
 <img src="./figures/CL.PNG" alt="Different Scenarios for Training" width="830" height="220">
 <img src="./figures/SCL.PNG" alt="Different Scenarios for Training" width="830" height="220">
 <img src="./figures/SL.PNG" alt="Different Scenarios for Training" width="830" height="220">
 
-
+###### Figure 3: Top: CKA between the individual layers of networks trained by CL, SCL, and SL schemes through different scenarios. Bottom: Linear probe accuracy for each layer after residual connections. By comparing the CKA matrices through standard training (the first row) with the ones through adversarial training, we can see the emergence of more block structures in adversarial training scenarios, which means having more similar representations between layers. The results on the second row show the block structure is highly reduced in CL scheme after full fine-tuning or in AT-full AT scenario. Linear probe accuracies for learned representations also prove this finding.
