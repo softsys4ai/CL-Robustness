@@ -20,8 +20,8 @@ cross entropy between the true and predicted labels is utilized for training the
 
 ## Representation Visualization
 <img src="./figures/ST_ST.PNG" alt="Different Scenarios for Training" width="830" height="230">
-<img src="./figures/CL.PNG" alt="Different Scenarios for Training" width="830" height="240">
-<img src="./figures/SCL.PNG" alt="Different Scenarios for Training" width="830" height="240">
-<img src="./figures/SL.PNG" alt="Different Scenarios for Training" width="830" height="240">
+<img src="./figures/CL.PNG" alt="Different Scenarios for Training" width="830" height="235">
+<img src="./figures/SCL.PNG" alt="Different Scenarios for Training" width="830" height="235">
+<img src="./figures/SL.PNG" alt="Different Scenarios for Training" width="830" height="235">
 
 ###### Top: CKA between the individual layers of networks trained by CL, SCL, and SL schemes through different scenarios. Bottom: Linear probe accuracy for each layer after residual connections. By comparing the CKA matrices through standard training (the first row) with the ones through adversarial training, we can see the emergence of more block structures in adversarial training scenarios, which means having more similar representations between layers. The results on the second row show the block structure is highly reduced in CL scheme after full fine-tuning or in AT-full AT scenario. Linear probe accuracies for learned representations also prove this finding.
