@@ -97,32 +97,30 @@ def set_models(opt,device):
     
     ResNet = Our_ResNet()
     Encoder = ResNet.to(device)
-
-
     MLP = nn.Sequential( nn.Linear(opt.featuresDim, opt.featuresDim   ),
                          nn.ReLU(inplace=True),
                          nn.Linear(opt.featuresDim, opt.projectionDim ) )
     MLP = MLP.to(device)
-
     Linear = nn.Linear(opt.featuresDim,opt.n_classes)
     Linear = Linear.to(device)
-
-
-    class EncoderWithHead(nn.Module):
-        def __init__(self, encoder, head):
-            super(EncoderWithHead, self).__init__()
-            self.encoder        = encoder
-            self.head = head
-
-
-        def forward(self, x):
-            out = F.normalize(self.head(self.encoder(x)),dim=1)
-            return out
-
     CLNet    = EncoderWithHead(Encoder, MLP)
     EvalNet  = EncoderWithHead(Encoder, Linear)
     return CLNet,EvalNet
 
+
+
+class EncoderWithHead(nn.Module):
+    def __init__(self, encoder, head):
+        super(EncoderWithHead, self).__init__()
+        self.encoder        = encoder
+        self.head = head
+
+
+    def forward(self, x):
+        out = F.normalize(self.head(self.encoder(x)),dim=1)
+        return out
+
+    
 
 
 
