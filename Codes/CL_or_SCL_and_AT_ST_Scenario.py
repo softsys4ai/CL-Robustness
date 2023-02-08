@@ -111,31 +111,28 @@ def set_models(opt,device):
     
     ResNet = Our_ResNet()
     Encoder = ResNet.to(device)
-
-
     MLP = nn.Sequential( nn.Linear(opt.featuresDim, opt.featuresDim   ),
                          nn.ReLU(inplace=True),
                          nn.Linear(opt.featuresDim, opt.projectionDim ) )
     MLP = MLP.to(device)
-
     Linear = nn.Linear(opt.featuresDim,opt.n_classes)
     Linear = Linear.to(device)
-
-
-    class EncoderWithHead(nn.Module):
-        def __init__(self, encoder, head):
-            super(EncoderWithHead, self).__init__()
-            self.encoder        = encoder
-            self.head = head
-
-
-        def forward(self, x):
-            out = F.normalize(self.head(self.encoder(x)),dim=1)
-            return out
-
     CLNet    = EncoderWithHead(Encoder, MLP)
     EvalNet  = EncoderWithHead(Encoder, Linear)
-    return CLNet,EvalNet
+    return CLNet, EvalNet
+
+class EncoderWithHead(nn.Module):
+    def __init__(self, encoder, head):
+        super(EncoderWithHead, self).__init__()
+        self.encoder        = encoder
+        self.head = head
+
+
+    def forward(self, x):
+        out = F.normalize(self.head(self.encoder(x)),dim=1)
+        return out
+
+
     
     
 
@@ -257,10 +254,8 @@ def testEvalNet_adv_end2end(opt,testLoader,EvalNet,device):
 def main():
     opt = parse_option()
     trainCLLoader,trainEvalLoader,testLoader = set_loader(opt)
-    
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    
-    CLNet,EvalNet =set_models(opt,device)
+    CLNet, EvalNet =set_models(opt,device)
     
     # Representation Learning Phase
     if opt.Reload_Encoder == True:
