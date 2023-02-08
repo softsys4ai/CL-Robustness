@@ -93,22 +93,21 @@ def set_models(opt,device):
 
     Linear = nn.Linear(opt.featuresDim,opt.n_classes)
     Linear = Linear.to(device)
-
-
-    class EncoderWithHead(nn.Module):
-        def __init__(self, encoder, head):
-            super(EncoderWithHead, self).__init__()
-            self.encoder        = encoder
-            self.head = head
-
-
-        def forward(self, x):
-            out = F.normalize(self.head(self.encoder(x)),dim=1)
-            return out
-
-    
     EvalNet  = EncoderWithHead(Encoder, Linear)
     return EvalNet
+
+
+class EncoderWithHead(nn.Module):
+    def __init__(self, encoder, head):
+        super(EncoderWithHead, self).__init__()
+        self.encoder        = encoder
+        self.head = head
+
+
+    def forward(self, x):
+        out = F.normalize(self.head(self.encoder(x)),dim=1)
+        return out
+
 
 
 def trainEvalNet_Ro(opt,trainEvalLoader,EvalNet,criterion,optimizer,device):
