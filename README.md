@@ -1,16 +1,38 @@
 # CL-Robustness
-In this work, we take a comparative approach to study the robustness of contrastive learning schemes against adversarial attacks. To this end, we conduct several comprehensive experiments to compare the robustness of contrastive and supervised contrastive with standard supervised learning under different adversarial training scenarios (Figure 1(c)). We conduct our comparative study on the robustness of the three following learning schemes,
+Our goal is to understand whether there are differences in how contrastive learning learns the representation from data compared to supervised learning from the adversarial perspective. To this end, we conduct extensive experiments to evaluate the robustness of the following learning schemes:
 
-- Supervised Learning (SL): The network consists of a base encoder followed by a fully connected layer as a linear classifier, as shown in figure 1(b). In this case,
-cross entropy between the true and predicted labels is utilized for training the network parameters.
 - Contrastive Learning (CL): Within the standard framework of SimCLR, contrastive learning trains a base encoder by minimizing a contrastive loss over the representations projected into a latent space (Figure 1(a)). The extracted features will be employed to train a linear classifier on a downstream task as shown in Figure 1(a).
 - Supervised Contrastive Learning (SCL): A supervised extension of contrastive learning  to avoid false positive pairs selection by leveraging the label information.
+- Supervised Learning (SL): The network consists of a base encoder followed by a fully connected layer as a linear classifier, as shown in figure 1(b). In this case, cross entropy between the true and predicted labels is utilized for training the network parameters.
+
+
+
 
 ## An overview of the methodology
-<img src="./figures/supervised.jpg" alt=Supervised Learning" width="600" height="400">
-<img src="./figures/contrastive.jpg" alt=Supervised Learning" width="600" height="400">
+<p align="center">
+<img src="./figures/contrastive.jpg" alt="Alt Text" width="500">
+ <br>
+  Figure 1(a) Contrastive and Supervised Contrastive Learning.
+</p>
 
-###### a) Representation learning phase, b) Linear classification phase, c) All different scenarios of training phases in contrastive and supervised contrastive learning scheme.
+<p align="center">
+<img src="./figures/supervised.jpg" alt="Alt Text" width="500">
+  <br>
+  Figure 1(b) Supervised Learning.
+</p>
+
+<div align="center">
+
+| Scenarios   | Pretraining Phase    | Finetuning Phase          |
+|-------------|----------------------|---------------------------|
+| ST          | Standard Training    | Standard Training         |
+| AT          | Adversarial Training | Standard Training         |
+| Partial-AT  | Adversarial Training | Partial Adversarial Training |
+| Full-AT     | Adversarial Training | Full Adversarial Training   |
+
+Caption: Summary of the training scenarios.
+
+</div>
 
 ## TSNE Visualization
 
