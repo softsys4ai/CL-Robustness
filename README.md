@@ -7,11 +7,11 @@ Our goal is to understand whether there are differences in how contrastive learn
 
 The training process in contrastive and supervised contrastive learning includes the following two phases:
 
--Pretraining Phase: The goal of this phase is to train the base encoder parameters $\bm{\theta}_{b}$ by minimizing a self-supervised loss $\mathscr{L}_{p}(\bm{\theta}_{b},\bm{\theta}_{ph})$ over a given dataset $\mathscr{D}_{p}$. Here $\bm{\theta}_{ph}$ is the parameters vector of the projection head used to map the base encoder output into a low dimensional latent space where the $\mathscr{L}_{p}$ is applied.
+- Pretraining Phase: The goal of this phase is to train the base encoder parameters by minimizing a self-supervised loss over a given dataset.
 
--Supervised Fine-tuning Phase: 
-The goal of this phase is to train the linear classifier parameters $\bm{\theta}_{c}$ by minimizing the supervised loss $\mathscr{L}_f(\bm{\theta}_{c})$ over a labeled dataset $\mathscr{D}_f$.
-The linear classifier learns to map the representations extracted during the pretraining phase to the labeled space, where $\mathscr{L}_f$ is the cross-entropy loss.
+- Supervised Fine-tuning Phase: 
+The goal of this phase is to train the linear classifier parameters by minimizing the supervised loss over a labeled dataset.
+The linear classifier learns to map the representations extracted during the pretraining phase to the labeled space, where its loss is the cross-entropy loss.
 
 We examine the standard and robust training variations of the aforementioned training phases to compare the adversarial robustness across different learning schemes. Table 1 summarises all the studied training combinations for different possible scenarios of training phases in contrastive and supervised contrastive learning schemes.
 
@@ -39,21 +39,23 @@ We examine the standard and robust training variations of the aforementioned tra
 | Partial-AT  | Adversarial Training | Partial Adversarial Training |
 | Full-AT     | Adversarial Training | Full Adversarial Training   |
 
-Caption: Summary of the training scenarios.
+Table 1: Summary of the training scenarios.
 
 </div>
 
-## TSNE Visualization
-
-<img src="./figures/tsne.PNG" alt="Different Scenarios for Training" width="500" height="400">
-
-
-###### Semi-supervised learning schemes (SL-CL and SCL-CL) separate classes much more clearly than contrastive learning (CL) scheme.
-
 ## Representation Visualization
-<img src="./figures/ST_ST.PNG" alt="Different Scenarios for Training" width="830" height="230">
-<img src="./figures/CL.PNG" alt="Different Scenarios for Training" width="830" height="235">
-<img src="./figures/SCL.PNG" alt="Different Scenarios for Training" width="830" height="235">
-<img src="./figures/SL.PNG" alt="Different Scenarios for Training" width="830" height="235">
+<p align="center">
+<img src="./figures/All-Linear_Probing.jpg" alt="Different Scenarios for Training" width="1200" height="900">
+ <br>
+ <em>Figure 2 <strong>The similarity between adversarial and clean representations is substantial in adversarially trained networks, regardless of the learning scheme used.</strong>.</em>  We analyze robust models by comparing layer pairs within different learning schemes and calculating their CKA similarity on clean and adversarial examples. Linear probing is employed to gain insights into the network dynamics and the roles of intermediate layers. The results demonstrate amplified cross-layer similarities compared to standard training, indicated by higher brightness levels in the plots. Additionally, networks trained through adversarial training exhibit significant similarities between adversarial and clean representations. Moreover, upon comparing the representations obtained from AT and its counterpart Full AT, we observe a significant enhancement in long-range similarities within CL. This improvement in similarity leads to substantial improvements in both standard and adversarial accuracy. In contrast, the representations learned by SCL and SL under AT and Full AT scenarios exhibit slight differences, resulting in minor variations in their performance.
+</p>
 
-###### Top: CKA between the individual layers of networks trained by CL, SCL, and SL schemes through different scenarios. Bottom: Linear probe accuracy for each layer after residual connections. By comparing the CKA matrices through standard training (the first row) with the ones through adversarial training, we can see the emergence of more block structures in adversarial training scenarios, which means having more similar representations between layers. The results on the second row show the block structure is highly reduced in CL scheme after full fine-tuning or in AT-full AT scenario. Linear probe accuracies for learned representations also prove this finding.
+
+
+<p align="center">
+<img src="./figures/All-ST-AT-Cross-Models.jpg" alt="All-ST-AT-Cross-Models" width="600" height="900">
+  <br>
+ <em>Caption: Summary of the <strong>training scenarios</strong>.</em>
+</p>
+
+
