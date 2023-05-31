@@ -7,7 +7,8 @@ cross entropy between the true and predicted labels is utilized for training the
 - Supervised Contrastive Learning (SCL): A supervised extension of contrastive learning  to avoid false positive pairs selection by leveraging the label information.
 
 ## An overview of the methodology
-<img src="./figures/Scenarios.jpg" alt="Different Scenarios for Training" width="600" height="400">
+<img src="./figures/supervised.jpg" alt=Supervised Learning" width="600" height="400">
+<img src="./figures/contrastive.jpg" alt=Supervised Learning" width="600" height="400">
 
 ###### a) Representation learning phase, b) Linear classification phase, c) All different scenarios of training phases in contrastive and supervised contrastive learning scheme.
 
