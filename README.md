@@ -38,24 +38,24 @@ We examine the standard and robust training variations of the aforementioned tra
 | AT          | Adversarial Training | Standard Training         |
 | Partial-AT  | Adversarial Training | Partial Adversarial Training |
 | Full-AT     | Adversarial Training | Full Adversarial Training   |
-
-Table 1: Summary of the training scenarios.
-
+<br>
+<em><strong>Table 1: Summary of the training scenarios.</strong></em>  
 </div>
 
-## Representation Visualization
+## Representation Analysis
+We analyze robust models by comparing layer pairs within different learning schemes and calculating their CKA similarity on clean and adversarial examples. Linear probing is employed to gain insights into the network dynamics and the roles of intermediate layers. The results demonstrate amplified cross-layer similarities compared to standard training, indicated by higher brightness levels in the plots. Additionally, networks trained through adversarial training exhibit significant similarities between adversarial and clean representations. Moreover, upon comparing the representations obtained from AT and its counterpart Full AT, we observe a significant enhancement in long-range similarities within CL. This improvement in similarity leads to substantial improvements in both standard and adversarial accuracy. In contrast, the representations learned by SCL and SL under AT and Full AT scenarios exhibit slight differences, resulting in minor variations in their performance.
 <p align="center">
 <img src="./figures/All-Linear_Probing.jpg" alt="Different Scenarios for Training" width="1200" height="900">
  <br>
- <em>Figure 2 <strong>The similarity between adversarial and clean representations is substantial in adversarially trained networks, regardless of the learning scheme used.</strong>.</em>  We analyze robust models by comparing layer pairs within different learning schemes and calculating their CKA similarity on clean and adversarial examples. Linear probing is employed to gain insights into the network dynamics and the roles of intermediate layers. The results demonstrate amplified cross-layer similarities compared to standard training, indicated by higher brightness levels in the plots. Additionally, networks trained through adversarial training exhibit significant similarities between adversarial and clean representations. Moreover, upon comparing the representations obtained from AT and its counterpart Full AT, we observe a significant enhancement in long-range similarities within CL. This improvement in similarity leads to substantial improvements in both standard and adversarial accuracy. In contrast, the representations learned by SCL and SL under AT and Full AT scenarios exhibit slight differences, resulting in minor variations in their performance.
+ <em><strong>Figure 2: The similarity between adversarial and clean representations is substantial in adversarially trained networks, regardless of the learning scheme used.</strong></em>  
 </p>
 
-
+The cross-model CKA heatmap between standard-trained networks trained using different learning schemes highlights that these schemes extract distinct adversarial representations, particularly in a large number of higher layers within the network. Cross-model comparisons demonstrate that, after applying adversarial training, the similarity between layers from different learning schemes increases, suggesting a shift towards extracting a universal set of representations.
 
 <p align="center">
 <img src="./figures/All-ST-AT-Cross-Models.jpg" alt="All-ST-AT-Cross-Models" width="600" height="900">
   <br>
- <em>Caption: Summary of the <strong>training scenarios</strong>.</em>
+ <em><strong> Unlike standard-trained networks, the ones trained through adversarial training show significant similarity in adversarial representations across different learning schemes.</strong></em> 
 </p>
 
 
