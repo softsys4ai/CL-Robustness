@@ -15,8 +15,6 @@ The linear classifier learns to map the representations extracted during the pre
 
 We examine the standard and robust training variations of the aforementioned training phases to compare the adversarial robustness across different learning schemes. Table 1 summarises all the studied training combinations for different possible scenarios of training phases in contrastive and supervised contrastive learning schemes.
 
-
-
 ## An overview of the methodology
 <p align="center">
 <img src="./figures/contrastive.jpg" alt="Alt Text" width="500">
@@ -41,6 +39,11 @@ We examine the standard and robust training variations of the aforementioned tra
 <br>
 <em><strong>Table 1: Summary of the training scenarios.</strong></em>  
 </div>
+
+## Running
+
+(1) Standard Cross-Entropy
+
 
 ## Representation Analysis
 We compute the similarity of representations across all layer combinations in standard-trained networks that have been trained using different learning schemes, considering both clean and adversarial data. The three learning schemes (SCL, SL, and CL) have noticeable differences in their internal representation structures (Figure 3, the first column). CL demonstrates more consistent representations throughout the network when compared to SCL and SL. Moreover, standard-trained networks exhibit substantial dissimilarity between clean and adversarial representations (Figure 3, the first column vs. the second one).
