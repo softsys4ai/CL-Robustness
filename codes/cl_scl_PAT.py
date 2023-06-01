@@ -7,9 +7,9 @@ import torchvision.models     as models
 import torch.nn.functional    as F
 import numpy                  as np
 import os
-from Networks import Our_ResNet
-from Loss import SupConLoss
-from Attacks import pgd_linf_end2end
+from networks import Our_ResNet
+from loss import SupConLoss
+from attacks import pgd_linf_end2end
 import argparse
 
 
@@ -17,9 +17,9 @@ def parse_option():
     parser = argparse.ArgumentParser('argument for training and test')
     parser.add_argument('--method', type=str, default='SimCLR',
                         choices=['SimCLR', 'SupCon'], help='Contrastive learning methods')
-    parser.add_argument('--Scenario', type=str, default='AT-Partial AT',
-                        choices=['AT-Partial AT', 'ST-Partial AT'], help='Two different scenario of training')
-    parser.add_argument('--Reload_model', type=bool, default= False, help='Reloading the trained model')
+    parser.add_argument('--scenario', type=str, default='AT-Partial-AT',
+                        choices=['AT-Partial-AT', 'ST-Partial-AT'], help='Two different scenario of training')
+    parser.add_argument('--reload_model', type=bool, default= False, help='reloading the trained model')
     parser.add_argument('--batch_size', type=int, default=256,
                         help='batch_size')
     parser.add_argument('--numEpochs', type=int, default=200,
@@ -50,11 +50,11 @@ def parse_option():
         format(opt.method, opt.dataset, opt.model, opt.batch_size, opt.numEpochs, opt.trial)
         
         
-    if opt.Scenario == 'AT-Partial AT':
-        opt.load_path = './save/AT-ST/{}_models'.format(opt.dataset)
+    if opt.scenario == 'AT-Partial-AT':
+        opt.load_path = './save/AT/{}_models'.format(opt.dataset)
         opt.save_path = './save/AT-Partial_AT/{}_models'.format(opt.dataset)
     else:
-        opt.load_path = './save/ST-ST/{}_models'.format(opt.dataset)
+        opt.load_path = './save/ST/{}_models'.format(opt.dataset)
         opt.save_path = './save/ST-Partial_AT/{}_models'.format(opt.dataset)
         
     if not os.path.isdir(opt.save_path):
@@ -202,7 +202,7 @@ def main():
     
 
     # Linear Classification Phase
-    if opt.Reload_model == True:
+    if opt.reload_model == True:
         PATH = opt.save_path+'/EvalNet_'+opt.model_name+'.pt'
         EvalNet.load_state_dict(torch.load(PATH))
     else:
