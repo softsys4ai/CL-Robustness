@@ -7,16 +7,16 @@ import torchvision.models     as models
 import torch.nn.functional    as F
 import numpy                  as np
 import os
-from Networks import Our_ResNet
-from Loss import SupConLoss
-from Attacks import pgd_linf_end2end
+from networks import Our_ResNet
+from loss import SupConLoss
+from attacks import pgd_linf_end2end
 import argparse
 
 
 def parse_option():
     parser = argparse.ArgumentParser('argument for training and test')
     parser.add_argument('--method', type=str, default='Supervised')
-    parser.add_argument('--Reload_model', type=bool, default= False, help='Reloading the trained model')
+    parser.add_argument('--reload_model', type=bool, default= False, help='reloading the trained model')
     parser.add_argument('--batch_size', type=int, default=256,
                         help='batch_size')
     parser.add_argument('--numEpochs', type=int, default=200,
@@ -37,7 +37,7 @@ def parse_option():
     opt = parser.parse_args()
     
     # set the path according to the environment
-    opt.save_path = './save/ST-ST/{}_models'.format(opt.dataset)
+    opt.save_path = './save/ST/{}_models'.format(opt.dataset)
     opt.model_name = '{}_{}_{}_bsz_{}_epoch_{}_trial_{}'.\
         format(opt.method, opt.dataset, opt.model, opt.batch_size, opt.numEpochs, opt.trial)
 
@@ -171,7 +171,7 @@ def main():
     EvalNet =set_models(opt,device)
 
     # Linear Classification Phase
-    if opt.Reload_model == True:
+    if opt.reload_model == True:
         PATH = opt.save_path+'/EvalNet_'+opt.model_name+'.pt'
         EvalNet.load_state_dict(torch.load(PATH))
     else:
