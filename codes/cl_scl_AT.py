@@ -7,9 +7,9 @@ import torchvision.models     as models
 import torch.nn.functional    as F
 import numpy                  as np
 import os
-from Networks import Our_ResNet
-from Attacks import pgd_linf,pgd_linf_end2end
-from Loss import SupConLoss
+from networks import Our_ResNet
+from attacks import pgd_linf,pgd_linf_end2end
+from loss import SupConLoss
 
 import argparse
 
@@ -17,9 +17,9 @@ import argparse
 def parse_option():
     parser = argparse.ArgumentParser('argument for training and test')
     parser.add_argument('--method', type=str, default='SimCLR',
-                        choices=['SimCLR', 'SupCon'], help='Contrastive learning methods')
-    parser.add_argument('--Reload_Encoder', type=bool, default= False, help='Reloading the trained base encoder')
-    parser.add_argument('--Reload_Classifier', type=bool, default= False, help='Reloading the trained linear classifier')
+                        choices=['SimCLR', 'SupCon'], help='contrastive learning methods')
+    parser.add_argument('--reload_encoder', type=bool, default= False, help='reloading the trained base encoder')
+    parser.add_argument('--eeload_classifier', type=bool, default= False, help='reloading the trained linear classifier')
     parser.add_argument('--batch_size', type=int, default=256,
                         help='batch_size')
     parser.add_argument('--numEpochs', type=int, default=200,
@@ -47,7 +47,7 @@ def parse_option():
     opt = parser.parse_args()
     
     # set the path according to the environment
-    opt.save_path = './save/AT-ST/{}_models'.format(opt.dataset)
+    opt.save_path = './save/AT/{}_models'.format(opt.dataset)
     opt.model_name = '{}_{}_{}_bsz_{}_epoch_{}_trial_{}'.\
         format(opt.method, opt.dataset, opt.model, opt.batch_size, opt.numEpochs, opt.trial)
 
