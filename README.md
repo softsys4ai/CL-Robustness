@@ -55,7 +55,7 @@ We compute the similarity of representations across all layer combinations in st
 
 We analyze robust models by comparing layer pairs within different learning schemes and calculating their CKA similarity on clean and adversarial examples. Linear probing is employed to gain insights into the network dynamics and the roles of intermediate layers. The results demonstrate amplified cross-layer similarities compared to standard training, indicated by higher brightness levels in the plots. Additionally, networks trained through adversarial training exhibit significant similarities between adversarial and clean representations. Moreover, upon comparing the representations obtained from AT and its counterpart Full AT, we observe a significant enhancement in long-range similarities within CL. This improvement in similarity leads to substantial improvements in both standard and adversarial accuracy. In contrast, the representations learned by SCL and SL under AT and Full AT scenarios exhibit slight differences, resulting in minor variations in their performance.
 <p align="center">
-<img src="./figures/All-Linear_Probing.jpg" alt="Different Scenarios for Training" width="1200" height="900">
+<img src="./figures/All-Linear_Probing.jpg" alt="Different Scenarios for Training" width="1200" height="750">
  <br>
  <em><strong>Figure 3: The similarity between adversarial and clean representations is substantial in adversarially trained networks, regardless of the learning scheme used.</strong></em>  
 </p>
@@ -64,7 +64,7 @@ Improving the similarity between adversarial and clean representations enhances 
 <p align="center">
 <img src="./figures/All-div-AT-diff-epsilon-CIFAR100.pdf.jpg" alt="Different Scenarios for Training" width="900" height="250">
  <br>
- <em><strong>Figure 4: Increasing the similarity between adversarial and clean representations improves robustness, especially near the end of networks.}</strong></em>  
+ <em><strong>Figure 4: Increasing the similarity between adversarial and clean representations improves robustness, especially near the end of networks.</strong></em>  
 </p>
 
 
