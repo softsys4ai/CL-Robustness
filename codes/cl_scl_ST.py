@@ -7,9 +7,9 @@ import torchvision.models     as models
 import torch.nn.functional    as F
 import numpy                  as np
 import os
-from Networks import Our_ResNet
-from Loss import SupConLoss
-from Attacks import pgd_linf, pgd_linf_end2end
+from networks import Our_ResNet
+from loss import SupConLoss
+from attacks import pgd_linf, pgd_linf_end2end
 import argparse
 
 
@@ -17,8 +17,8 @@ def parse_option():
     parser = argparse.ArgumentParser('argument for training and test')
     parser.add_argument('--method', type=str, default='SimCLR',
                         choices=['SimCLR', 'SupCon'], help='Contrastive learning methods')
-    parser.add_argument('--Reload_Encoder', type=bool, default= False, help='Reloading the trained base encoder')
-    parser.add_argument('--Reload_Classifier', type=bool, default= False, help='Reloading the trained linear classifier')
+    parser.add_argument('--reload_Encoder', type=bool, default= False, help='reloading the trained base encoder')
+    parser.add_argument('--reload_Classifier', type=bool, default= False, help='reloading the trained linear classifier')
     parser.add_argument('--batch_size', type=int, default=256,
                         help='batch_size')
     parser.add_argument('--numEpochs', type=int, default=200,
@@ -43,7 +43,7 @@ def parse_option():
     opt = parser.parse_args()
     
     # set the path according to the environment    
-    opt.save_path = './save/ST-ST/{}_models'.format(opt.dataset)
+    opt.save_path = './save/ST/{}_models'.format(opt.dataset)
     opt.model_name = '{}_{}_{}_bsz_{}_epoch_{}_trial_{}'.\
         format(opt.method, opt.dataset, opt.model, opt.batch_size, opt.numEpochs, opt.trial)
 
@@ -271,7 +271,7 @@ def main():
     
     # Representation Learning Phase
     
-    if opt.Reload_Encoder == True:
+    if opt.reload_Encoder == True:
         PATH = opt.save_path+'/CLNet_'+opt.model_name+'.pt'
         CLNet.load_state_dict(torch.load(PATH))
     else:
@@ -280,7 +280,7 @@ def main():
         trainCLNet(opt,trainCLLoader,CLNet,criterion,optimizer,device)
 
     # Linear Classification Phase
-    if opt.Reload_Classifier == True:
+    if opt.reload_Classifier == True:
         PATH = opt.save_path+'/EvalNet_'+opt.model_name+'.pt'
         EvalNet.load_state_dict(torch.load(PATH))
     else:
