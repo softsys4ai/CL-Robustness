@@ -42,8 +42,32 @@ We examine the standard and robust training variations of the aforementioned tra
 
 ## Running
 
-(1) Standard Cross-Entropy
-
+#### Contrastive and Supervised Contrastive Learning
+(1) ST Scenario
+```
+python cl_scl_ST.py
+ ```
+ (2) AT Scenario
+```
+python cl_scl_AT.py
+ ```
+ (3) Partial AT Scenario
+```
+python cl_scl_PAT.py --scenario AT-Partial-AT
+ ```
+ (4) Full AT Scenario
+```
+python cl_scl_FAT.py --scenario AT-Full-AT
+ ```
+ #### Supervised Learning
+(1) ST Scenario
+```
+python sl_ST.py
+ ```
+ (2) AT Scenario
+```
+python sl_AT.py
+```
 
 ## Representation Analysis
 We compute the similarity of representations across all layer combinations in standard-trained networks that have been trained using different learning schemes, considering both clean and adversarial data. The three learning schemes (SCL, SL, and CL) have noticeable differences in their internal representation structures (Figure 3, the first column). CL demonstrates more consistent representations throughout the network when compared to SCL and SL. Moreover, standard-trained networks exhibit substantial dissimilarity between clean and adversarial representations (Figure 3, the first column vs. the second one).
