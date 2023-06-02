@@ -73,7 +73,7 @@ python sl_AT.py
 We compute the similarity of representations across all layer combinations in standard-trained networks that have been trained using different learning schemes, considering both clean and adversarial data. The three learning schemes (SCL, SL, and CL) have noticeable differences in their internal representation structures (Figure 3, the first column). CL demonstrates more consistent representations throughout the network when compared to SCL and SL. Moreover, standard-trained networks exhibit substantial dissimilarity between clean and adversarial representations (Figure 3, the first column vs. the second one).
 
 <p align="center">
-<img src="./figures/All-ST-clean-Adv-CIFAR100.pdf.jpg" alt="All-ST-AT-Cross-Models" width="600" height="900">
+<img src="./figures/All-ST-clean-Adv-CIFAR100.pdf.jpg" alt="All-ST-AT-Cross-Models" width="600" height="800">
   <br>
  <em><strong>Figure 2: The representations obtained from standard-trained networks exhibit significant differences between adversarial and clean examples, regardless of the learning algorithm utilized.</strong></em>
 </p>
