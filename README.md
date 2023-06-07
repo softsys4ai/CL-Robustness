@@ -68,6 +68,11 @@ python sl_ST.py
 ```
 python sl_AT.py
 ```
+ #### Semi-Supervised Learning
+(1) ST Scenario
+```
+python semi-cl-scl-sl.py
+ ```
 
 ## Representation Analysis
 We compute the similarity of representations across all layer combinations in standard-trained networks that have been trained using different learning schemes, considering both clean and adversarial data. The three learning schemes (SCL, SL, and CL) have noticeable differences in their internal representation structures (Figure 3, the first column). CL demonstrates more consistent representations throughout the network when compared to SCL and SL. Moreover, standard-trained networks exhibit substantial dissimilarity between clean and adversarial representations (Figure 3, the first column vs. the second one).
