@@ -259,7 +259,7 @@ def trainCLNet(opt,trainloader_Labeled,trainloader_UNLabeled,CLNet,criterion_CL,
                  features2 = torch.cat([z1_T1_X1.unsqueeze(1), z2_T2_X1.unsqueeze(1)], dim=1)
                  loss3 = criterion_CL(features2,labels2).to(device)  
             else:
-             loss3 = 0
+                 loss3 = 0
             
             loss =  loss1 + loss2 + loss3
 
